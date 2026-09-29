@@ -23,7 +23,9 @@ export class ChessApiError extends Error {
   }
 }
 
-const API_BASE = import.meta.env.PUBLIC_API_BASE_URL ?? "http://localhost:8000";
+const API_BASE =
+  import.meta.env.PUBLIC_API_BASE_URL ||
+  (import.meta.env.DEV ? "http://localhost:8000" : "https://api.parth-joshi0.com");
 
 export async function prewarmEngine(): Promise<void> {
   const controller = new AbortController();

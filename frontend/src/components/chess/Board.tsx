@@ -37,6 +37,7 @@ export default function Board({ fen, onDrop, onSquareClick, squareStyles, disabl
           darkSquareStyle: { backgroundColor: "#2a3b31" },
           lightSquareStyle: { backgroundColor: "#3f5648" },
           dropSquareStyle: { boxShadow: "inset 0 0 0 4px #f4d35e" },
+          draggingPieceStyle: { transform: "scale(1.05)" },
           boardStyle: {
             width: "100%",
             height: "auto",

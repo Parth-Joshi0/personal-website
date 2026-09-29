@@ -18,13 +18,16 @@ Two independently deployed halves, both behind `parth-joshi0.com` (registered on
 
 Render's free tier sleeps the service after 15 minutes idle; the next request wakes it in ~30-60s. The frontend fires a pre-warm `GET /api/chess/health` call when the chess page mounts to absorb this before the visitor's first move. If cold starts prove annoying in practice, Render's paid Starter tier (~$7/mo) removes the sleep — no code changes needed to switch.
 
-## Frontend — Cloudflare Pages
+## Frontend — Cloudflare Workers static assets
 
-1. New Pages project, connect this GitHub repo.
-2. Root directory: `frontend`.
-3. Framework preset: **Astro**. Build command: `npm run build`. Output directory: `dist`.
-4. Environment variable: `PUBLIC_API_BASE_URL=https://api.parth-joshi0.com`.
-5. In the Pages project's **Custom domains** tab, attach `parth-joshi0.com` and `www.parth-joshi0.com` — since the domain is already on Cloudflare, this manages the apex/CNAME records automatically.
+1. Create a Workers project and connect this GitHub repo.
+2. Set the root directory to `frontend` (not `/`).
+3. Build command: `npm run build`.
+4. Deploy command: `npm run deploy`.
+5. Add the build variable `PUBLIC_API_BASE_URL=https://api.parth-joshi0.com` for production.
+6. Deploy, then open **Settings → Domains & Routes** and attach `parth-joshi0.com` and `www.parth-joshi0.com`.
+
+The frontend includes `wrangler.jsonc`, which publishes Astro's static `dist` directory. If the root directory is `/`, Cloudflare runs npm from the repository root and fails because the `package.json` is located in `frontend/`.
 
 ## CORS
 
