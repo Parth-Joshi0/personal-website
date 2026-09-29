@@ -1,0 +1,68 @@
+---
+import {
+  siC,
+  siDocker,
+  siFastapi,
+  siGit,
+  siJavascript,
+  siJinja,
+  siLatex,
+  siLinux,
+  siNodedotjs,
+  siNumpy,
+  siOpenjdk,
+  siOpengl,
+  siPostgresql,
+  siPython,
+  siReact,
+  siSwift,
+  siTypescript,
+} from "simple-icons";
+import type { SimpleIcon } from "simple-icons";
+
+interface Props {
+  items: readonly string[];
+  compact?: boolean;
+}
+
+const { items, compact = false } = Astro.props;
+const icons: Record<string, SimpleIcon> = {
+  c: siC,
+  python: siPython,
+  java: siOpenjdk,
+  javascript: siJavascript,
+  typescript: siTypescript,
+  sql: siPostgresql,
+  postgresql: siPostgresql,
+  git: siGit,
+  linux: siLinux,
+  opengl: siOpengl,
+  docker: siDocker,
+  react: siReact,
+  fastapi: siFastapi,
+  swift: siSwift,
+  swiftui: siSwift,
+  numpy: siNumpy,
+  nodejs: siNodedotjs,
+  "node.js": siNodedotjs,
+  jinja: siJinja,
+  latex: siLatex,
+};
+
+const entries = items
+  .map((label) => ({ label, icon: icons[label.toLowerCase()] }))
+  .filter((entry): entry is { label: string; icon: SimpleIcon } => Boolean(entry.icon));
+---
+
+{entries.length > 0 && (
+  <ul class:list={["tech-icons", { "tech-icons-compact": compact }]} aria-label="Technologies used">
+    {entries.map(({ label, icon }) => (
+      <li title={label}>
+        <svg viewBox="0 0 24 24" role="img" aria-label={label} style={`--brand-color: #${icon.hex === "000000" ? "f0eee1" : icon.hex}`}>
+          <path d={icon.path}></path>
+        </svg>
+        <span>{label}</span>
+      </li>
+    ))}
+  </ul>
+)}

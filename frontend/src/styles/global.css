@@ -60,6 +60,14 @@ h2 { font: 600 40px/1.15 var(--font-hand); }
 .project-meta span { padding-inline: 8px; color: var(--color-chalk-yellow); }
 h3 { font-size: 23px; font-weight: 500; line-height: 1.4; margin-top: 9px; }
 .project-tech { font-size: 11px; color: var(--color-chalk-yellow); margin: 9px 0 20px; }
+.tech-icons { display: flex; flex-wrap: wrap; gap: 18px 22px; margin: 0; padding: 0; list-style: none; }
+.tech-icons li { display: grid; justify-items: center; gap: 6px; min-width: 44px; color: var(--color-chalk-dim); font-size: 10px; }
+.tech-icons svg { width: 29px; height: 29px; fill: var(--brand-color); filter: saturate(.72); transition: transform .18s ease, filter .18s ease; }
+.tech-icons li:hover svg { transform: translateY(-3px) rotate(-2deg); filter: saturate(1); }
+.tech-icons-compact { gap: 10px; margin: -10px 0 19px; }
+.tech-icons-compact li { display: block; min-width: 0; }
+.tech-icons-compact svg { width: 19px; height: 19px; }
+.tech-icons-compact span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
 .project-status { display: flex; align-items: center; gap: 9px; width: fit-content; margin: -6px 0 18px; color: var(--color-chalk-dim); font-size: 11px; }
 .project-status span { width: 7px; height: 7px; flex: 0 0 auto; border-radius: 50%; background: var(--color-chalk-yellow); box-shadow: 0 0 0 3px #e5cc8220; animation: status-pulse 2.4s ease-in-out infinite; }
 @keyframes status-pulse { 0%, 100% { opacity: .5; transform: scale(.85); } 50% { opacity: 1; transform: scale(1); } }
@@ -99,9 +107,8 @@ h3 { font-size: 23px; font-weight: 500; line-height: 1.4; margin-top: 9px; }
 .education-note h3 { color: var(--color-chalk); font-size: 18px; margin-top: 0; }
 .education-note p { margin-top: 7px; }
 .coursework { font-size: 12px; }
-.toolbox { display: flex; gap: 35px; align-items: center; margin-top: 36px; }
-.toolbox span { font-size: 25px; color: var(--color-chalk-yellow); }
-.toolbox p { font-size: 12px; line-height: 2; color: var(--color-chalk-dim); }
+.toolbox { display: flex; gap: 35px; align-items: flex-start; margin-top: 40px; }
+.toolbox > span { min-width: 145px; padding-top: 2px; color: var(--color-chalk-yellow); font-size: 25px; }
 .contact-section { border-top: 2px solid #f0eee158; padding-top: 45px; }
 .contact-note { font-size: 24px; color: var(--color-chalk-yellow); margin-bottom: 12px; }
 .contact-section h2 { font-size: 54px; margin-bottom: 20px; }

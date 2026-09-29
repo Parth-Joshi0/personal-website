@@ -1,6 +1,7 @@
 ---
 import { education } from "../../data/education";
 import { skills } from "../../data/skills";
+import TechStack from "../TechStack.astro";
 ---
 <section id="about" class="board-width section-space" aria-labelledby="about-title">
   <div class="section-heading"><span class="section-number">03 /</span><h2 id="about-title">A little background</h2></div>
@@ -8,5 +9,8 @@ import { skills } from "../../data/skills";
     <div><p class="about-lead">I like building the parts that usually come in a library.</p><p>For me, that has meant writing a chess engine's search and evaluation, implementing backpropagation, and building a spatial index for a physics simulation. My interests sit around performance, machine learning, and chess.</p><a class="text-link" href="/resume.pdf" download="Parth-Joshi-Resume.pdf">Download my résumé ↓</a></div>
     <div class="education-note"><h3>{education.school}</h3><p>Computer Science + Math</p><p class="project-meta">{education.period} · {education.location}</p><p>GPA {education.gpa}</p><p class="coursework">Coursework includes {education.coursework.join(", ")}.</p></div>
   </div>
-  <div class="toolbox"><span class="chalk-hand">Tools I work with</span><p>{skills.Languages.join(" · ")}<br />Git · Linux · OpenGL · Docker · Azure</p></div>
+  <div class="toolbox">
+    <span class="chalk-hand">Languages &amp; tech</span>
+    <TechStack items={[...skills.Languages, "Git", "Linux", "OpenGL", "Docker"]} />
+  </div>
 </section>

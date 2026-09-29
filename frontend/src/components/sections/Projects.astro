@@ -1,6 +1,7 @@
 ---
 import { projects, smallProjects } from "../../data/projects";
 import ProjectCard from "../projects/ProjectCard.astro";
+import TechStack from "../TechStack.astro";
 ---
 <section id="projects" class="board-width section-space" aria-labelledby="projects-title">
   <div class="section-heading"><span class="section-number">01 /</span><h2 id="projects-title">Selected projects</h2><span class="chalk-hand section-aside">from the inside out</span></div>
@@ -12,6 +13,7 @@ import ProjectCard from "../projects/ProjectCard.astro";
         <p class="project-meta">{project.period}</p>
         <h4>{project.title}</h4>
         <p class="project-tech">{project.tech}</p>
+        <TechStack items={project.tech.split(" · ")} compact />
         <p>{project.summary}</p>
         <div class="project-links">
           {project.repoUrl && <a class="text-link" href={project.repoUrl}>Source code ↗</a>}

@@ -1,6 +1,7 @@
 ---
 import YouTubeLiteEmbed from "./YouTubeLiteEmbed.tsx";
 import ProjectSketch from "./ProjectSketch.astro";
+import TechStack from "../TechStack.astro";
 import type { Project } from "../../data/projects";
 interface Props { project: Project; index: number }
 const { project, index } = Astro.props;
@@ -11,6 +12,7 @@ const illustrated = ["fly-brain-rover", "chess-engine", "racing-simulator"].incl
     <p class="project-meta">{String(index + 1).padStart(2, "0")} <span aria-hidden="true">/</span> {project.period}</p>
     <h3>{project.title}</h3>
     <p class="project-tech">{project.tech}</p>
+    <TechStack items={project.tech.split(" · ")} compact />
     {project.status && <p class="project-status"><span aria-hidden="true"></span>{project.status}</p>}
     <p class="project-summary">{project.summary}</p>
     <p class="project-detail">{project.detail}</p>
