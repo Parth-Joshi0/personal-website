@@ -1,0 +1,25 @@
+---
+import YouTubeLiteEmbed from "./YouTubeLiteEmbed.tsx";
+import ProjectSketch from "./ProjectSketch.astro";
+import type { Project } from "../../data/projects";
+interface Props { project: Project; index: number }
+const { project, index } = Astro.props;
+const illustrated = ["fly-brain-rover", "chess-engine", "racing-simulator"].includes(project.slug) || Boolean(project.videoId);
+---
+<article id={project.slug} class:list={["project-row", { illustrated }]}>
+  <div class="project-copy">
+    <p class="project-meta">{String(index + 1).padStart(2, "0")} <span aria-hidden="true">/</span> {project.period}</p>
+    <h3>{project.title}</h3>
+    <p class="project-tech">{project.tech}</p>
+    {project.status && <p class="project-status"><span aria-hidden="true"></span>{project.status}</p>}
+    <p class="project-summary">{project.summary}</p>
+    <p class="project-detail">{project.detail}</p>
+    {project.callout && <p class="award">{project.callout}</p>}
+    <div class="project-links">
+      {project.liveUrl && <a href={project.liveUrl} class="text-link accent-link">Play the engine ↗</a>}
+      <a href={project.repoUrl} class="text-link" aria-label={`View source for ${project.title}`}>Source code ↗</a>
+      {project.devpostUrl && <a href={project.devpostUrl} class="text-link">Devpost ↗</a>}
+    </div>
+  </div>
+  {["fly-brain-rover", "chess-engine", "racing-simulator"].includes(project.slug) ? <div class="project-visual"><ProjectSketch kind={project.slug} /><p class="chalk-hand project-note">{project.note}</p></div> : project.videoId ? <div class="project-visual"><YouTubeLiteEmbed client:visible id={project.videoId} title={project.title} /><p class="chalk-hand project-note">{project.note}</p></div> : <p class="chalk-hand project-note flow-note">{project.note}</p>}
+</article>

@@ -1,0 +1,3 @@
+[submodule "backend/vendor/chess-game-engine"]
+	path = backend/vendor/chess-game-engine
+	url = https://github.com/Parth-Joshi0/chess-game-engine.git

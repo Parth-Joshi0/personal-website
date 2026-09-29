@@ -1,0 +1,31 @@
+---
+import "@fontsource/caveat/400.css";
+import "@fontsource/caveat/600.css";
+import "@fontsource/work-sans/400.css";
+import "@fontsource/work-sans/500.css";
+import "@fontsource/work-sans/700.css";
+import "../styles/global.css";
+interface Props { title: string; description?: string }
+const { title, description = "Parth Joshi, Computer Science + Math at Western University. A playable chess engine, a neural network that learns to drive, and other projects built from scratch." } = Astro.props;
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#182923" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="Parth Joshi" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen">
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <slot />
+  </body>
+</html>

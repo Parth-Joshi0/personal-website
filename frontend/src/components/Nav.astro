@@ -1,0 +1,17 @@
+---
+const links = [
+  { href: "#projects", label: "Projects" },
+  { href: "#experience", label: "Experience" },
+  { href: "#about", label: "About" },
+  { href: "#contact", label: "Contact" },
+];
+---
+<header class="site-header">
+  <nav class="board-width site-nav" aria-label="Main navigation">
+    <a href="/" class="brand-name" aria-label="Parth Joshi, home">Parth Joshi</a>
+    <ul class="nav-links">
+      {links.map(link => <li><a href={link.href}>{link.label}</a></li>)}
+    </ul>
+    <a href="/resume.pdf" class="resume-link">Résumé <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>

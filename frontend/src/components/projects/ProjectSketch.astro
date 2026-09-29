@@ -1,0 +1,42 @@
+---
+interface Props { kind: string }
+const { kind } = Astro.props;
+---
+{kind === "fly-brain-rover" ? (
+  <figure class="project-sketch">
+    <svg viewBox="0 0 420 245" role="img" aria-labelledby="fly-title">
+      <title id="fly-title">Camera motion flows through a model of fly neurons and synapses to produce drone flight commands.</title>
+      <g class="sketch-lines">
+        <rect x="15" y="90" width="66" height="48" rx="5"/><circle cx="48" cy="114" r="14"/>
+        <path d="M82 114 H121 M299 114 H340 M356 91 v46 M337 105 h38 M344 98 l24 32 M368 98 l-24 32"/>
+        <circle cx="151" cy="75" r="8"/><circle cx="151" cy="114" r="8"/><circle cx="151" cy="153" r="8"/>
+        <circle cx="205" cy="55" r="8"/><circle cx="205" cy="95" r="8"/><circle cx="205" cy="135" r="8"/><circle cx="205" cy="175" r="8"/>
+        <circle cx="264" cy="80" r="8"/><circle cx="264" cy="114" r="8"/><circle cx="264" cy="148" r="8"/>
+        <path d="M159 75 L197 55 M159 75 L197 95 M159 114 L197 95 M159 114 L197 135 M159 153 L197 135 M159 153 L197 175 M213 55 L256 80 M213 95 L256 80 M213 95 L256 114 M213 135 L256 114 M213 135 L256 148 M213 175 L256 148 M272 114 H299"/>
+      </g>
+      <g class="sketch-accent"><path d="M89 103 q15 -18 30 0 M89 114 q15 -18 30 0 M89 125 q15 -18 30 0"/><path d="M330 77 q26 -17 52 0 M330 150 q26 17 52 0"/></g>
+      <g class="sketch-label"><text x="11" y="172">optic flow</text><text x="130" y="220">fly connectome</text><text x="314" y="186">dodge + steer</text></g>
+    </svg>
+    <figcaption>Camera motion / spiking neural circuit / motor command</figcaption>
+  </figure>
+) : kind === "chess-engine" ? (
+  <figure class="project-sketch">
+    <svg viewBox="0 0 420 240" role="img" aria-labelledby="search-title">
+      <title id="search-title">Search tree diagram: explore candidate moves and prune a branch that cannot improve the result.</title>
+      <g class="sketch-lines"><path d="M210 43 L100 104 M210 43 L315 104 M100 104 L48 175 M100 104 L150 175 M315 104 L266 175 M315 104 L371 175"/><circle cx="210" cy="33" r="15"/><circle cx="100" cy="108" r="13"/><circle cx="315" cy="108" r="13"/><circle cx="48" cy="180" r="10"/><circle cx="150" cy="180" r="10"/></g>
+      <path class="sketch-accent" d="M221 40 L306 97 M252 145 L382 157 M252 154 L382 146" />
+      <g class="sketch-label"><text x="24" y="224">keep looking</text><text x="255" y="211">skip this branch</text><text x="253" y="39">your next move?</text></g>
+    </svg>
+    <figcaption>Inside the engine / alpha-beta pruning</figcaption>
+  </figure>
+) : (
+  <figure class="project-sketch racing-sketch">
+    <svg viewBox="0 0 420 250" role="img" aria-labelledby="racing-title">
+      <title id="racing-title">Conceptual track diagram showing rays from a car measuring distance to the track boundaries.</title>
+      <g class="sketch-lines"><path d="M36 232 C15 130 59 26 183 29 C293 29 256 129 379 75 M100 237 C65 148 116 82 177 90 C237 96 245 197 401 136"/><rect x="83" y="140" width="24" height="43" rx="5" transform="rotate(13 95 161)"/><path d="M84 149 l22 5 M79 174 l22 5"/></g>
+      <g class="sketch-accent"><path d="M96 151 L55 99 M96 151 L97 48 M96 151 L151 34 M96 151 L178 91"/><circle cx="55" cy="99" r="3"/><circle cx="97" cy="48" r="3"/><circle cx="151" cy="34" r="3"/><circle cx="178" cy="91" r="3"/></g>
+      <g class="sketch-label"><text x="220" y="222">distance → steering</text><text x="229" y="53">eyes on the track</text></g>
+    </svg>
+    <figcaption>Inside the simulator / ray-casting sensors (schematic)</figcaption>
+  </figure>
+)}

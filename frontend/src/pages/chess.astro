@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ChessGame from "../components/chess/ChessGame.tsx";
+---
+
+<BaseLayout title="Play Chess — Parth Joshi" description="Play against Parth Joshi's own chess engine, running live over UCI.">
+  <header class="mx-auto flex max-w-4xl items-center justify-between px-4 py-4">
+    <a href="/" class="chalk-hand text-lg text-chalk-dim hover:text-chalk">← Back home</a>
+    <a
+      href="https://github.com/Parth-Joshi0/chess-game-engine"
+      class="chalk-hand text-lg text-chalk-blue underline decoration-dashed hover:text-chalk"
+    >
+      View source ↗
+    </a>
+  </header>
+  <main id="main-content">
+    <section class="chess-hero" aria-labelledby="chess-title">
+      <img class="chess-hero-piece chess-hero-piece-left" src="/doodles/chess-piece.svg" alt="" aria-hidden="true" />
+      <div class="chess-hero-copy">
+        <p class="chess-kicker">YOUR MOVE</p>
+        <h1 id="chess-title" class="chalk-heading">Play my chess engine</h1>
+        <p class="chalk-hand">
+          You have white. Choose a difficulty, then click or drag a piece to move.
+          The engine may take a few seconds to think at higher levels.
+        </p>
+        <svg class="chess-hero-arrow" viewBox="0 0 170 42" aria-hidden="true">
+          <path d="M4 9 C55 37 113 36 160 13 M143 9 l18 4 l-11 15" />
+        </svg>
+      </div>
+      <div class="chess-hero-board" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+        <b>♞</b>
+      </div>
+    </section>
+    <ChessGame client:load />
+  </main>
+</BaseLayout>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" fill="none">
+  <g stroke="#f5f3e7" stroke-width="1.5" opacity="0.55">
+    <path d="M25 25 L100 20" /><path d="M25 25 L100 50" /><path d="M25 25 L100 90" /><path d="M25 25 L100 120" />
+    <path d="M25 70 L100 20" /><path d="M25 70 L100 50" /><path d="M25 70 L100 90" /><path d="M25 70 L100 120" />
+    <path d="M25 115 L100 20" /><path d="M25 115 L100 50" /><path d="M25 115 L100 90" /><path d="M25 115 L100 120" />
+    <path d="M100 20 L175 45" /><path d="M100 50 L175 45" /><path d="M100 90 L175 95" /><path d="M100 120 L175 95" />
+  </g>
+  <g fill="#0f1a15" stroke="#f5f3e7" stroke-width="2.5">
+    <circle cx="25" cy="25" r="8" /><circle cx="25" cy="70" r="8" /><circle cx="25" cy="115" r="8" />
+    <circle cx="100" cy="20" r="7" /><circle cx="100" cy="50" r="7" /><circle cx="100" cy="90" r="7" /><circle cx="100" cy="120" r="7" />
+    <circle cx="175" cy="45" r="8" /><circle cx="175" cy="95" r="8" />
+  </g>
+</svg>

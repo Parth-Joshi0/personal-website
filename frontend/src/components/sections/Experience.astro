@@ -1,0 +1,10 @@
+---
+import { experience } from "../../data/experience";
+---
+<section id="experience" class="board-width section-space" aria-labelledby="experience-title">
+  <div class="section-heading"><span class="section-number">02 /</span><h2 id="experience-title">Away from the side projects</h2></div>
+  {experience.map(entry => <div class="experience-row">
+    <div><h3>{entry.org}</h3><p class="role">{entry.role}</p><p class="project-meta">{entry.period} · {entry.location}</p></div>
+    <div class="experience-copy"><p>I worked on tools for tracking engineering requests: a Power BI dashboard, connected data in Azure SQL and Oracle, and Power Apps for linking work packages to requests.</p><p>Custom JavaScript handled many-to-many record relationships. Power Automate workflows handled updates and request routing, reducing manual entry and tracking errors.</p></div>
+  </div>)}
+</section>
