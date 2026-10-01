@@ -1,8 +1,8 @@
 export interface Project {
   slug: string;
   title: string;
-  period: string;
-  repoUrl: string;
+  period?: string;
+  repoUrl?: string;
   liveUrl?: string;
   devpostUrl?: string;
   videoId?: string;
@@ -19,7 +19,6 @@ export const projects: Project[] = [
     slug: "fly-brain-rover",
     title: "Putting a fly brain in a drone",
     period: "Sept 2026",
-    repoUrl: "https://github.com/Parth-Joshi0/Fly-Brain-Rover",
     tech: "Python · Brian2 · FlyWire connectome · Computer vision · DJI Tello",
     status: "In progress — the core system is working; final flight testing and tuning remain.",
     summary: "A DJI Tello controller powered by a simulated slice of a fruit fly's nervous system. Camera motion becomes neural activity; descending-neuron spikes become escape and steering commands.",
@@ -100,7 +99,7 @@ export const smallProjects: SmallProject[] = [
     title: "Resume Tailor",
     period: "Feb 2026",
     tech: "Python · Gemini · Jinja · LaTeX",
-    summary: "A personal tool that scores structured project data against a job description, selects relevant work, and compiles a tailored PDF résumé.",
+    summary: "A personal tool that scores structured project data against a job description, selects relevant work, and compiles a tailored PDF resume.",
     repoUrl: "https://github.com/Parth-Joshi0/resume-tailor",
   },
 ];
