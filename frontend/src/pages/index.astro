@@ -1,20 +1,110 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Nav from "../components/Nav.astro";
-import Hero from "../components/sections/Hero.astro";
-import About from "../components/sections/About.astro";
-import Experience from "../components/sections/Experience.astro";
-import Projects from "../components/sections/Projects.astro";
-import Contact from "../components/sections/Contact.astro";
----
+import "../styles/global.css";
 
-<BaseLayout title="Parth Joshi">
-  <Nav />
-  <main id="main-content">
-    <Hero />
-    <Projects />
-    <Experience />
-    <About />
-    <Contact />
-  </main>
-</BaseLayout>
+const projects = [
+  {
+    title: "Fruity Fly",
+    period: "2026",
+    tech: "Python, Brian2, FlyWire connectome, OpenCV, DJI Tello",
+    description:
+      "A DJI Tello drone flown by a simulated part of a fruit fly's nervous system, built with two teammates. It runs two circuits built from the FlyWire connectome: a 274-cell dodge circuit and a 144-cell balance circuit. Camera motion is turned into neural input, and the output neurons drive the drone's escape and steering. The drone also spots bananas: in a held-out test flight, the fine-tuned detector found 99% of them, up from 77%.",
+    links: [
+      { label: "Website / whitepaper", href: "https://fruity-fly.com" },
+      { label: "GitHub", href: "https://github.com/Parth-Joshi0/Fly-Brain-Rover" },
+      { label: "Demo video", href: "https://www.youtube.com/watch?v=yhFDCaL5JFg" },
+    ],
+  },
+  {
+    title: "Neural network racing simulator",
+    period: "2026",
+    tech: "C, OpenGL, Python",
+    description:
+      "A 2D car physics simulator in C, plus a neural network written from scratch (no ML libraries) that learns to drive using policy gradients. Trained over 30,000+ episodes. A quadtree speeds up collision and ray-cast sensor checks.",
+    links: [{ label: "GitHub", href: "https://github.com/Parth-Joshi0/Neural-Network-from-Scratch" }],
+  },
+  {
+    title: "Maple sap flow prediction",
+    period: "2025",
+    tech: "Python, FastAPI, JavaScript",
+    description:
+      "Predicts when maple sap will run using 20+ years of climate data. Won the Smart Cookie Award ($400 prize) at BramHacks 2025.",
+    links: [{ label: "GitHub", href: "https://github.com/Parth-Joshi0/Maple-Sap-Flow-Prediction" }],
+  },
+  {
+    title: "Chess engine",
+    period: "2026",
+    tech: "Python",
+    description:
+      "A chess engine with alpha-beta search, transposition tables, and a UCI interface.",
+    links: [{ label: "GitHub", href: "https://github.com/Parth-Joshi0/chess-game-engine" }],
+  },
+];
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content="Parth Joshi, Computer Science + Math student at Western University." />
+    <title>Parth Joshi</title>
+  </head>
+  <body>
+    <aside>
+      <img src="/parth-joshi.webp" alt="Parth Joshi" width="750" height="1000" />
+      <h1>Parth Joshi</h1>
+      <p class="muted">Computer Science + Math at Western University</p>
+      <nav>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#links">Links</a>
+      </nav>
+    </aside>
+    <main>
+      <section id="projects">
+        <h2>Projects</h2>
+        {projects.map((p) => (
+          <article>
+            <h3>{p.title} <span class="muted">({p.period})</span></h3>
+            <p>{p.description}</p>
+            <p class="muted">{p.tech}</p>
+            <p class="links">
+              {p.links.map((l) => <a href={l.href}>{l.label}</a>)}
+            </p>
+          </article>
+        ))}
+      </section>
+
+      <section id="experience">
+        <h2>Experience</h2>
+        <article>
+          <h3>Project Engineering Intern, Bruce Power <span class="muted">(May 2025 – present)</span></h3>
+          <p>
+            Built Power BI dashboards and Power Apps for tracking engineering requests, connected to an
+            Azure SQL database. Automated updates and request routing with Power Automate.
+          </p>
+        </article>
+      </section>
+
+      <section id="education">
+        <h2>Education</h2>
+        <article>
+          <h3>Western University <span class="muted">(2024 – 2028)</span></h3>
+          <p>Honours Specialization in Computer Science + Math. GPA 3.72.</p>
+        </article>
+      </section>
+
+      <section id="links">
+        <h2>Links</h2>
+        <ul>
+          <li>Email: <a href="mailto:pjoshi62@uwo.ca">pjoshi62@uwo.ca</a></li>
+          <li>GitHub: <a href="https://github.com/Parth-Joshi0">github.com/Parth-Joshi0</a></li>
+          <li>LinkedIn: <a href="https://linkedin.com/in/parth-joshi16">linkedin.com/in/parth-joshi16</a></li>
+          <li>Resume: <a href="/resume.pdf">resume.pdf</a></li>
+        </ul>
+      </section>
+
+      <footer class="muted">© {new Date().getFullYear()} Parth Joshi</footer>
+    </main>
+  </body>
+</html>
