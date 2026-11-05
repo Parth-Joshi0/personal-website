@@ -1,7 +1,29 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 import "../styles/global.css";
+import fruityFlyDroneView from "../assets/projects/fruity-fly-drone-view.jpg";
+import fruityFlyBrain from "../assets/projects/fruity-fly-brain.jpg";
+import fruityFlyDemo from "../assets/projects/fruity-fly-demo.jpg";
+import racerSensors from "../assets/projects/racer-sensors.png";
+import mapleHome from "../assets/projects/maple-home.jpg";
+import mapleResults from "../assets/projects/maple-results.jpg";
+import chessBoard from "../assets/projects/chess-board.png";
+import chessMenu from "../assets/projects/chess-menu.png";
 
-const projects = [
+// Photos are optional. To add one: drop the file in src/assets/projects/,
+// import it above, and add { src, alt, caption?, href? } to that entry's `images`.
+type Photo = { src: ImageMetadata; alt: string; caption?: string; href?: string };
+type Entry = {
+  title: string;
+  period: string;
+  tech: string;
+  description: string;
+  links: { label: string; href: string }[];
+  images?: Photo[];
+};
+
+const projects: Entry[] = [
   {
     title: "Fruity Fly",
     period: "2026",
@@ -13,6 +35,24 @@ const projects = [
       { label: "GitHub", href: "https://github.com/Parth-Joshi0/Fly-Brain-Rover" },
       { label: "Demo video", href: "https://www.youtube.com/watch?v=yhFDCaL5JFg" },
     ],
+    images: [
+      {
+        src: fruityFlyDroneView,
+        alt: "In-flight view from the drone's camera: a banana held up with a detection box and the brain's live state overlaid",
+        caption: "In flight: the drone's camera, with the detector and brain state",
+      },
+      {
+        src: fruityFlyBrain,
+        alt: "Fly brain visualization with spiking neurons highlighted, and bars showing which descending neurons are firing",
+        caption: "Simulated fly brain, live spikes",
+      },
+      {
+        src: fruityFlyDemo,
+        alt: "Two team members at a whiteboard explaining the DNp06 escape neuron",
+        caption: "Demo video: the escape neuron",
+        href: "https://www.youtube.com/watch?v=yhFDCaL5JFg",
+      },
+    ],
   },
   {
     title: "Neural network racing simulator",
@@ -21,6 +61,13 @@ const projects = [
     description:
       "A 2D car physics simulator in C, plus a neural network written from scratch (no ML libraries) that learns to drive using policy gradients. Trained over 30,000+ episodes. A quadtree speeds up collision and ray-cast sensor checks.",
     links: [{ label: "GitHub", href: "https://github.com/Parth-Joshi0/Neural-Network-from-Scratch" }],
+    images: [
+      {
+        src: racerSensors,
+        alt: "OpenGL simulator: the car entering a corner with its nine red ray-cast sensors fanning out to the track walls",
+        caption: "The car's 9 ray sensors, in the OpenGL simulator",
+      },
+    ],
   },
   {
     title: "Maple sap flow prediction",
@@ -29,6 +76,18 @@ const projects = [
     description:
       "Predicts when maple sap will run using 20+ years of climate data. Won the Smart Cookie Award ($400 prize) at BramHacks 2025.",
     links: [{ label: "GitHub", href: "https://github.com/Parth-Joshi0/Maple-Sap-Flow-Prediction" }],
+    images: [
+      {
+        src: mapleHome,
+        alt: "myMaple home page: Optimize the syrup tapping season, over an autumn forest, with a location search below",
+        caption: "myMaple, built at BramHacks",
+      },
+      {
+        src: mapleResults,
+        alt: "myMaple results for Brampton, ON: a satellite map and predicted tap start, end, and ideal tap dates",
+        caption: "Predicted tapping dates for Brampton, ON",
+      },
+    ],
   },
   {
     title: "Chess engine",
@@ -37,6 +96,18 @@ const projects = [
     description:
       "A chess engine with alpha-beta search, transposition tables, and a UCI interface.",
     links: [{ label: "GitHub", href: "https://github.com/Parth-Joshi0/chess-game-engine" }],
+    images: [
+      {
+        src: chessBoard,
+        alt: "Chess game window mid-game, with the selected knight and its legal moves highlighted",
+        caption: "Playing the engine, with legal moves shown",
+      },
+      {
+        src: chessMenu,
+        alt: "Chess engine home screen for choosing human or engine players and search depth",
+        caption: "Setup screen: human or engine, search depth",
+      },
+    ],
   },
 ];
 ---
@@ -66,6 +137,27 @@ const projects = [
         {projects.map((p) => (
           <article>
             <h3>{p.title} <span class="muted">({p.period})</span></h3>
+            {p.images && p.images.length > 0 && (
+              <div class="photos">
+                {p.images.map((img, i) => {
+                  const pic = (
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      widths={[320, 640, 960]}
+                      sizes="(max-width: 720px) 100vw, 400px"
+                      loading={i === 0 ? "eager" : "lazy"}
+                    />
+                  );
+                  return (
+                    <figure>
+                      {img.href ? <a href={img.href}>{pic}</a> : pic}
+                      {img.caption && <figcaption class="muted">{img.caption}</figcaption>}
+                    </figure>
+                  );
+                })}
+              </div>
+            )}
             <p>{p.description}</p>
             <p class="muted">{p.tech}</p>
             <p class="links">

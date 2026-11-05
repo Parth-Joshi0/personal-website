@@ -136,3 +136,51 @@ footer {
     padding: 24px 16px;
   }
 }
+
+/* Project photos: each keeps its own shape, all at one height */
+.photos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 10px 0 12px;
+}
+
+/* table layout makes the caption wrap to the image's width */
+.photos figure {
+  display: table;
+  margin: 0;
+}
+
+.photos img {
+  display: block;
+  height: 200px;
+  width: auto;
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  background: #f4f4f4;
+}
+
+.photos a:hover img {
+  opacity: 0.85;
+}
+
+.photos figcaption {
+  display: table-caption;
+  caption-side: bottom;
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+@media (max-width: 720px) {
+  .photos figure {
+    width: 100%;
+  }
+
+  .photos img {
+    width: 100%;
+    height: auto;
+  }
+}
